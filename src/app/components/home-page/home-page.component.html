@@ -1,10 +1,7 @@
 <h1 class="title">Store!</h1>
 <div class="container-store">
   <div class="container-list">
-    <app-product-item></app-product-item>
-    <app-product-item></app-product-item>
-    <app-product-item></app-product-item>
-    <app-product-item></app-product-item>
-    <app-product-item></app-product-item>
+    <app-store-item [store]="store" *ngFor="let store of storeList; index as i">
+    </app-store-item>
   </div>
 </div>

@@ -6,13 +6,18 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { StorePageComponent } from './components/store-page/store-page.component';
-import { StoreListComponent } from './components/store-list/store-list.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
 import { StoreItemComponent } from './components/store-item/store-item.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, LoginPageComponent, StorePageComponent, StoreListComponent, ProductListComponent, StoreItemComponent, ProductItemComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    LoginPageComponent,
+    StorePageComponent,
+    StoreItemComponent,
+    ProductItemComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
