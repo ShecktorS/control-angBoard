@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  background-color: #faca93;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 20px;
+
+  div {
+    display: flex;
+  }
+}
+
+.content {
+  border: solid 1px #1e1e1e;
+  height: 80vh;
+}
