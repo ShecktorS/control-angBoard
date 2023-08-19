@@ -1,1 +1,18 @@
-<p>store-page works!</p>
+<div class="store-page" *ngIf="storeExists; else storeNotExists">
+  <h2>{{ store.name }}</h2>
+  <div class="store-detail">
+    <h4>
+      Note: Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae
+      repellat quam aliquid illum quasi, quaerat maxime distinctio atque fuga
+      sequi explicabo culpa officia.
+    </h4>
+    <h3 class="store-location">{{ store.location }}</h3>
+  </div>
+  <div class="products">
+    <h1>Prodotti</h1>
+    <div class="products-list"></div>
+  </div>
+</div>
+<ng-template #storeNotExists>
+  <p>Non esisto</p>
+</ng-template>

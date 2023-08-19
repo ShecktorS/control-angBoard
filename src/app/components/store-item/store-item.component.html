@@ -4,7 +4,7 @@
     <h2>{{ store.name }}</h2>
   </div>
   <hr />
-  <button>Apri</button>
+  <button [routerLink]="['store', store.id]">Apri</button>
   <div class="overlay">
     <img src="{{ store.img }}" alt="store img" />
   </div>
