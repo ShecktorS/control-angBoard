@@ -29,9 +29,13 @@
       }
     }
   }
+
+  .login {
+    cursor: pointer;
+  }
 }
 
 .content {
-  border: solid 1px #1e1e1e;
-  height: 80vh;
+  border: dotted 1px #1e1e1e;
+  /*height: 80vh;*/
 }

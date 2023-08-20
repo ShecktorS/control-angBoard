@@ -8,6 +8,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { StorePageComponent } from './components/store-page/store-page.component';
 import { StoreItemComponent } from './components/store-item/store-item.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     StorePageComponent,
     StoreItemComponent,
     ProductItemComponent,
+    ProductPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

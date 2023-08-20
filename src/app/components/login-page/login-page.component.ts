@@ -10,6 +10,6 @@ export class LoginPageComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    console.log(this.authService.pippo);
+    console.log(this.authService.person);
   }
 }
