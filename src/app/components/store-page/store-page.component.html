@@ -1,13 +1,73 @@
 <div class="store-page">
-  <h2>{{ store.name }}</h2>
+  <h2>
+    {{ store.name }}
+  </h2>
   <div class="store-detail">
     <h4>
-      Note: Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae
-      repellat quam aliquid illum quasi, quaerat maxime distinctio atque fuga
-      sequi explicabo culpa officia.
+      {{ store.description }}
     </h4>
     <h3 class="store-location">{{ store.location }}</h3>
-    <p style="cursor: pointer" (click)="deleteStore()">Elimina</p>
+    <!-- ---INPUT CONTAINER---- -->
+    <form class="input-container" *ngIf="editStore">
+      <div>
+        <label for="name">Nome dello store:</label>
+        <input
+          (input)="changeName($event)"
+          value="{{ store.name }}"
+          type="text"
+          name="name"
+          id="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="details">Dettagli</label>
+        <textarea
+          (input)="changeDescription($event)"
+          name="details"
+          id="details"
+          cols="25"
+          rows="10"
+        >
+  {{ store.description }} </textarea
+        >
+      </div>
+      <div>
+        <label for="location">Citta dello Store</label>
+        <input
+          value="{{ store.location }}"
+          (input)="changeLocation($event)"
+          type="text"
+          name="location"
+          id="location"
+        />
+      </div>
+    </form>
+    <!-- ---------------------- -->
+    <div class="not-input-container" *ngIf="editable && !editStore">
+      <p style="cursor: pointer" (click)="showEditInput()">Modifica</p>
+      <p class="delete-button" style="cursor: pointer" (click)="deleteStore()">
+        Elimina
+      </p>
+    </div>
+    <div class="not-input-container" *ngIf="editStore">
+      <p
+        class="cancel-pseudo-btn"
+        style="cursor: pointer"
+        (click)="hideEditInput()"
+      >
+        Annulla
+      </p>
+      <button
+        [disabled]="checkSelfCondition"
+        class="confirm-btn"
+        (click)="confirmStoreEdit()"
+        style="cursor: pointer"
+      >
+        Conferma
+      </button>
+    </div>
+    <button class="edit-btn" (click)="editingActivate()">✏️</button>
   </div>
   <div class="products">
     <h1>Prodotti</h1>

@@ -10,6 +10,8 @@ export class DataService {
       name: 'Nike',
       img: 'https://picsum.photos/300/300?1',
       location: 'Milano',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae repellat quam aliquid illum quasi, quaerat maxime distinctio atque fuga sequi explicabo culpa officia.',
       products: [
         { title: 'scarpa', description: 'Una bella scarpa', idProduct: 1 },
         {
@@ -30,6 +32,7 @@ export class DataService {
       name: 'Adidas',
       img: 'https://picsum.photos/300/300?2',
       location: 'Roma',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
       products: [
         { title: 'scarpa', description: 'Una bella scarpa', idProduct: 1 },
         {
@@ -41,9 +44,10 @@ export class DataService {
     },
     {
       id: 3,
-      name: 'Londale',
+      name: 'Lonsdale',
       img: 'https://picsum.photos/300/300?3',
       location: 'Palermo',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
       products: [
         { title: 'tappeto', description: 'Una tappeto di lusso', idProduct: 4 },
       ],
@@ -60,10 +64,15 @@ export class DataService {
     this.store.push(newStore);
   }
 
-  editStore() {}
+  editStore(id: string, newStore: any) {
+    let [storeToEdit] = this.store.filter((store) => store.id === +id);
+    let storeUpdate = { ...storeToEdit, ...newStore };
+    this.store = this.store.filter((store) => store.id !== +id);
+    this.store.push(storeUpdate);
+  }
 
-  killStore(i: string) {
-    return (this.store = this.store.filter((store) => store.id !== +i));
+  killStore(id: string) {
+    return (this.store = this.store.filter((store) => store.id !== +id));
   }
 
   // Products Methods:

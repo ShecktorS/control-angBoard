@@ -8,6 +8,7 @@
   }
 
   .store-detail {
+    position: relative;
     border: solid #faca93 5px;
     background-color: #e3e4dd;
     padding: 20px;
@@ -19,6 +20,85 @@
 
     h3 {
       text-align: end;
+    }
+
+    .not-input-container {
+      display: flex;
+      align-items: center;
+
+      p:nth-last-child(1),
+      .confirm-btn {
+        margin-left: 30px;
+      }
+
+      .cancel-pseudo-btn {
+        color: rgb(186, 34, 34);
+
+        &:hover {
+          text-shadow: 0 0 0.5px red;
+        }
+      }
+
+      .confirm-btn {
+        height: 30px;
+        border: none;
+        background-color: rgb(68, 148, 68);
+        color: white;
+        font-family: "Poppins", sans-serif;
+        padding: 0 7px;
+
+        &:hover {
+          filter: brightness(0.95);
+        }
+        &:disabled {
+          filter: grayscale(1);
+        }
+      }
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+
+      div {
+        max-width: 500px;
+        width: 100%;
+        min-width: 300px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        label {
+          min-width: 100px;
+        }
+
+        input {
+          height: 30px;
+        }
+
+        textarea,
+        input {
+          font-family: "Poppins", sans-serif;
+        }
+      }
+    }
+
+    .edit-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      height: 30px;
+      width: 35px;
+      text-align: center;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(0.98);
+      }
     }
   }
 
