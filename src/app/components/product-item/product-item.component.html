@@ -1,4 +1,7 @@
-<div routerLink="/" class="product-container">
+<div
+  [routerLink]="['/store', storeId, 'product', product.idProduct]"
+  class="product-container"
+>
   <h3 class="title">{{ product.title }}</h3>
   <p class="description">{{ product.description }}</p>
   <button class="del-btn">Elimina</button>

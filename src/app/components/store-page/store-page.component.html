@@ -1,4 +1,4 @@
-<div class="store-page" *ngIf="storeExists; else storeNotExists">
+<div class="store-page">
   <h2>{{ store.name }}</h2>
   <div class="store-detail">
     <h4>
@@ -7,17 +7,16 @@
       sequi explicabo culpa officia.
     </h4>
     <h3 class="store-location">{{ store.location }}</h3>
+    <p style="cursor: pointer" (click)="deleteStore()">Elimina</p>
   </div>
   <div class="products">
     <h1>Prodotti</h1>
     <div class="products-list">
       <app-product-item
         [product]="product"
+        [storeId]="storeId"
         *ngFor="let product of store.products; index as i"
       ></app-product-item>
     </div>
   </div>
 </div>
-<ng-template #storeNotExists>
-  <p>Non esisto</p>
-</ng-template>

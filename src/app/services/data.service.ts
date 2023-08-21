@@ -50,5 +50,33 @@ export class DataService {
     },
   ];
 
+  //Store Methods:
+
+  getStorebyId(id: string) {
+    return this.store.find((store) => store.id === +id);
+  }
+
+  addStore(newStore: any) {
+    this.store.push(newStore);
+  }
+
+  editStore() {}
+
+  killStore(i: string) {
+    return (this.store = this.store.filter((store) => store.id !== +i));
+  }
+
+  // Products Methods:
+
+  getProductbyId(storeId: string, productId: string) {
+    let thisStore = this.store.find((store) => store.id === +storeId);
+    let product = thisStore?.products.find(
+      (product) => product.idProduct === +productId
+    );
+    return product;
+  }
+
   constructor() {}
 }
+
+// TODO: Inserire nella funzione di aggiunzione un contatore che va poi ad assegnare un id sempre diverso e sempre maggiore
