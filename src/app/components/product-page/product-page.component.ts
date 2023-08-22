@@ -12,8 +12,15 @@ export class ProductPageComponent implements OnInit {
   productId!: string | null;
   store: any;
   product: any;
+  editMode = false;
+  inputTitle!: string;
+  inputDescription!: string;
 
   getId = (num: number) => num - 1;
+
+  changeMode() {
+    this.editMode = !this.editMode;
+  }
 
   constructor(private data: DataService, private route: ActivatedRoute) {}
 
@@ -23,6 +30,8 @@ export class ProductPageComponent implements OnInit {
     if (this.storeId && this.productId) {
       this.store = this.data.getStorebyId(this.storeId);
       this.product = this.data.getProductbyId(this.storeId, this.productId);
+      this.inputTitle = this.product.title;
+      this.inputDescription = this.product.description;
     } else {
     }
   }

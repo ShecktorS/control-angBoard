@@ -1,5 +1,36 @@
 <div class="info-product">
-  <h3>ID: {{ product.idProduct }}</h3>
-  <h1>{{ product.title }}</h1>
-  <h2>{{ product.description }}</h2>
+  <div *ngIf="!editMode; else editContainer">
+    <h3>ID: {{ product.idProduct }}</h3>
+    <h1>{{ product.title }}</h1>
+    <h2>{{ product.description }}</h2>
+  </div>
+  <ng-template #editContainer>
+    <h2>Modifica il prodotto</h2>
+    <form>
+      <input
+        type="text"
+        name="title"
+        [(ngModel)]="inputTitle"
+        value="{{ product.title }}"
+      />
+      <input
+        type="text"
+        name="description"
+        [(ngModel)]="inputDescription"
+        value="{{ product.description }}"
+      />
+      <button
+        [disabled]="
+          inputTitle === product.title &&
+          inputDescription === product.description
+        "
+        type="submit"
+      >
+        Conferma
+      </button>
+    </form>
+  </ng-template>
+  <button (click)="changeMode()" class="edit-button">
+    {{ !editMode ? "✏️" : "❌" }}
+  </button>
 </div>

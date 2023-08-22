@@ -1,9 +1,50 @@
 .info-product {
+  position: relative;
   border: solid 5px #faca93;
   border: inherit 5px #ffe7cb;
   width: 300px;
-  margin: 10px auto;
+  margin: 80px auto;
   padding: 30px;
   border-radius: 20px;
   background-color: #e3e4dd;
+  text-transform: capitalize;
+
+  .edit-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: solid 5px #faca93;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    input,
+    button {
+      font-family: "Poppins";
+      height: 30px;
+    }
+
+    input {
+      padding-left: 30px;
+      text-transform: capitalize;
+    }
+
+    button {
+      align-self: center;
+      width: 100px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
 }
