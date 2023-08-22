@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { VisualConditionService } from 'src/app/services/visual-condition.service';
 
-//FIXME: aggiustare dopo l edit
 @Component({
   selector: 'app-store-page',
   templateUrl: './store-page.component.html',
@@ -10,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class StorePageComponent implements OnInit {
   storeExists: boolean | undefined;
-  storeId!: null | string;
+  storeId!: string;
   store!: any;
   editable = false;
   editStore = false;
@@ -25,7 +25,6 @@ export class StorePageComponent implements OnInit {
   editingActivate() {
     this.editable = !this.editable;
     this.editStore = false;
-    // console.log(this.editStoreEntity);
   }
 
   showEditInput() {
@@ -72,17 +71,19 @@ export class StorePageComponent implements OnInit {
   }
 
   openModal() {
-    this.showModal = !this.showModal;
+    this.condition.swicthCondition();
   }
 
   constructor(
     private data: DataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public condition: VisualConditionService
   ) {}
 
   ngOnInit(): void {
-    this.storeId = this.route.snapshot.paramMap.get('id');
+    this.showModal = this.condition.modalAddProduct;
+    this.storeId = this.route.snapshot.paramMap.get('id') || '';
     if (this.storeId) {
       this.storeExists = true;
       this.store = this.data.getStorebyId(this.storeId);

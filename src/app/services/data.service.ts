@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { findIndex } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  addStoreCounter = 5;
-  addProductCounter = 5;
+  private addStoreCounter = 5;
+  private addProductCounter = 5;
 
   store = [
     {
@@ -88,6 +89,14 @@ export class DataService {
   }
 
   // Products Methods:
+
+  addProduct(idStore: string, newProduct: any) {
+    this.addProductCounter++;
+    let updateProduct = { ...newProduct, idProduct: this.addProductCounter };
+    this.store[
+      this.store.findIndex((store) => store.id === +idStore)
+    ].products.push(updateProduct);
+  }
 
   getProductbyId(storeId: string, productId: string) {
     let thisStore = this.store.find((store) => store.id === +storeId);

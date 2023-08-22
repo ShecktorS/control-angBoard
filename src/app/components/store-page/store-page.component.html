@@ -29,7 +29,7 @@
           cols="25"
           rows="10"
         >
-  {{ store.description }} </textarea
+          {{ store.description }} </textarea
         >
       </div>
       <div>
@@ -83,8 +83,11 @@
     </p>
   </div>
 </div>
-<div [ngClass]="{ 'open-modal': showModal }" class="addProductFormContainer">
-  <app-add-product-form></app-add-product-form>
+<div
+  [ngClass]="{ 'open-modal': condition.modalAddProduct }"
+  class="addProductFormContainer"
+>
+  <app-add-product-form [storeId]="storeId"></app-add-product-form>
   <button (click)="openModal()" class="closeModal">❌</button>
 </div>
-<div [ngClass]="{ backDark: showModal }" class="overlay"></div>
+<div [ngClass]="{ backDark: condition.modalAddProduct }" class="overlay"></div>

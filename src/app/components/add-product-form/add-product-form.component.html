@@ -1,6 +1,13 @@
-<form>
-  <input type="text" name="Nome" id="Nome" placeholder="Prodotto" />
+<form (submit)="addProduct()">
   <input
+    [(ngModel)]="newProduct.title"
+    type="text"
+    name="title"
+    id="title"
+    placeholder="Prodotto"
+  />
+  <input
+    [(ngModel)]="newProduct.description"
     type="text"
     name="descrizione"
     id="descrizione"
