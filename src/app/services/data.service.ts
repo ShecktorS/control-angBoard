@@ -85,6 +85,15 @@ export class DataService {
     return product;
   }
 
+  killProduct(storeId: string, productId: string) {
+    let storeIndex = this.store.findIndex((store) => store.id === +storeId);
+    let thisStore = this.store[storeIndex];
+    let productIndex = thisStore?.products.findIndex(
+      (product) => product.idProduct === +productId
+    );
+    this.store[storeIndex].products.splice(productIndex, 1);
+  }
+
   constructor() {}
 }
 

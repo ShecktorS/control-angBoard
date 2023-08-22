@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,13 @@ export class ProductItemComponent implements OnInit {
   @Input() product: any;
   @Input() storeId: any;
 
-  constructor() {}
+  deleteProduct(e: Event) {
+    e.stopPropagation();
+    console.log(this.product);
+    this.data.killProduct(this.storeId, this.product.idProduct);
+  }
+
+  constructor(private data: DataService) {}
 
   ngOnInit(): void {
     console.log(this.product);

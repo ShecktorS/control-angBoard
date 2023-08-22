@@ -5,6 +5,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { StorePageComponent } from './components/store-page/store-page.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { AddStoreFormComponent } from './components/add-store-form/add-store-form.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'store/:id', component: StorePageComponent },
   { path: 'store/:id/product/:idProduct', component: ProductPageComponent },
   { path: 'store', redirectTo: '/' },
+  { path: 'add-new-store', component: AddStoreFormComponent },
   { path: '404', component: ErrorPageComponent },
   { path: '**', redirectTo: '404' },
 ];

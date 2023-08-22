@@ -10,6 +10,7 @@ import { StoreItemComponent } from './components/store-item/store-item.component
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { AddStoreFormComponent } from './components/add-store-form/add-store-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     ProductItemComponent,
     ProductPageComponent,
     ErrorPageComponent,
+    AddStoreFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

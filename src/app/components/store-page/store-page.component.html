@@ -78,5 +78,8 @@
         *ngFor="let product of store.products; index as i"
       ></app-product-item>
     </div>
+    <p>
+      {{ store.products.length < 1 ? "Non è presente alcun prodotto!" : "" }}
+    </p>
   </div>
 </div>

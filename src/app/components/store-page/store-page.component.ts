@@ -60,6 +60,7 @@ export class StorePageComponent implements OnInit {
   confirmStoreEdit() {
     this.data.editStore(this.storeId!, this.editStoreEntity);
     this.editingActivate();
+    this.store = this.data.getStorebyId(this.storeId!);
   }
 
   deleteStore() {

@@ -1,0 +1,24 @@
+<h1>Aggiungi un nuovo Store!</h1>
+<form>
+  <div class="storeName">
+    <label for="storeName">Nome dello store</label
+    ><input required type="text" name="storeName" id="storeName" />
+  </div>
+  <div class="storeDescription">
+    <label for="storeDescription">Descrizione</label
+    ><input
+      required
+      type="text"
+      name="storeDescription"
+      id="storeDescription"
+    />
+  </div>
+  <div class="storeLocation">
+    <label for="storeLocation">Citta</label
+    ><input required type="text" name="storeLocation" id="storeLocation" />
+  </div>
+  <div class="buttons">
+    <button (click)="returnToHome()">Annulla</button>
+    <input type="submit" value="Conferma" />
+  </div>
+</form>

@@ -6,3 +6,20 @@
     display: flex;
   }
 }
+
+.addStoreBtn {
+  height: 40px;
+  width: 200px;
+  margin: 50px calc(50% - 100px);
+  border-radius: 10px;
+  border: none;
+  background-color: #faca93;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.95);
+    transform: scale(1.03);
+  }
+}

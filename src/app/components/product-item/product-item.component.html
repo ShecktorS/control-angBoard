@@ -4,5 +4,5 @@
 >
   <h3 class="title">{{ product.title }}</h3>
   <p class="description">{{ product.description }}</p>
-  <button class="del-btn">Elimina</button>
+  <button (click)="deleteProduct($event)" class="del-btn">Elimina</button>
 </div>

@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  div {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      height: 30px;
+      padding-left: 20px;
+    }
+  }
+  .buttons {
+    justify-content: center;
+    gap: 40px;
+    margin: 30px;
+
+    input,
+    button {
+      padding: 0;
+      height: 30px;
+      width: 100px;
+      text-align: center;
+      border-radius: 10px;
+      border: none;
+      background-color: #faca93;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}

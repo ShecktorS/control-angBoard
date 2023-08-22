@@ -4,6 +4,8 @@ p {
 }
 
 p {
-  margin-left: 200px;
+  width: 200px;
+  margin: 50px calc(50% - 100px);
+
   cursor: pointer;
 }
