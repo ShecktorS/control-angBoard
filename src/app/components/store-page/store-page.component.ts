@@ -20,6 +20,7 @@ export class StorePageComponent implements OnInit {
     location: '',
   };
   checkSelfCondition = true;
+  showModal = false;
 
   editingActivate() {
     this.editable = !this.editable;
@@ -68,6 +69,10 @@ export class StorePageComponent implements OnInit {
       this.data.killStore(this.storeId);
       this.router.navigate(['/']);
     }
+  }
+
+  openModal() {
+    this.showModal = !this.showModal;
   }
 
   constructor(

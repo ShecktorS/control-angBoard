@@ -70,7 +70,7 @@
     <button class="edit-btn" (click)="editingActivate()">✏️</button>
   </div>
   <div class="products">
-    <h1>Prodotti</h1>
+    <h1>Prodotti <span (click)="openModal()" class="addButton">➕</span></h1>
     <div class="products-list">
       <app-product-item
         [product]="product"
@@ -83,3 +83,8 @@
     </p>
   </div>
 </div>
+<div [ngClass]="{ 'open-modal': showModal }" class="addProductFormContainer">
+  <app-add-product-form></app-add-product-form>
+  <button (click)="openModal()" class="closeModal">❌</button>
+</div>
+<div [ngClass]="{ backDark: showModal }" class="overlay"></div>
