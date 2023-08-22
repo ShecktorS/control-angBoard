@@ -89,7 +89,7 @@ export class StorePageComponent implements OnInit {
         location: this.store.location,
       };
     } else {
-      this.storeExists = false;
+      this.router.navigate(['/404']);
     }
     console.log(this.data.store);
   }

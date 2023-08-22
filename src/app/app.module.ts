@@ -11,6 +11,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { AddStoreFormComponent } from './components/add-store-form/add-store-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AddStoreFormComponent } from './components/add-store-form/add-store-for
     ErrorPageComponent,
     AddStoreFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

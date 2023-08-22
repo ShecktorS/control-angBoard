@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DataService {
+  addStoreCounter = 5;
+  addProductCounter = 5;
+
   store = [
     {
       id: 1,
@@ -61,7 +64,16 @@ export class DataService {
   }
 
   addStore(newStore: any) {
-    this.store.push(newStore);
+    this.addStoreCounter++;
+    let storeImg = `https://picsum.photos/300/300?${this.addStoreCounter}`;
+    let storeToAdd = {
+      ...newStore,
+      id: this.addStoreCounter,
+      img: storeImg,
+      products: [],
+    };
+    this.store.push(storeToAdd);
+    console.log(this.store);
   }
 
   editStore(id: string, newStore: any) {
