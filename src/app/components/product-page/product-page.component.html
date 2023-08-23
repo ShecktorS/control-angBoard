@@ -6,7 +6,7 @@
   </div>
   <ng-template #editContainer>
     <h2>Modifica il prodotto</h2>
-    <form>
+    <form (submit)="editProduct()">
       <input
         type="text"
         name="title"

@@ -22,6 +22,26 @@ export class ProductPageComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
+  editProduct() {
+    if (this.inputTitle.length > 1 && this.inputDescription.length > 1) {
+      this.changeMode();
+      let newProduct = {
+        title: this.inputTitle,
+        description: this.inputDescription,
+        idProduct: +this.productId!,
+      };
+      this.data.editProduct(this.storeId!, this.productId!, newProduct);
+      this.updateData();
+    } else {
+      alert('iInserisci correttamente tutti i dati!');
+    }
+  }
+
+  updateData() {
+    this.store = this.data.getStorebyId(this.storeId!);
+    this.product = this.data.getProductbyId(this.storeId!, this.productId!);
+  }
+
   constructor(private data: DataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {

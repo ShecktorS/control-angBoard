@@ -106,6 +106,16 @@ export class DataService {
     return product;
   }
 
+  editProduct(storeId: string, productId: string, newProduct: any) {
+    let indexOfStore = this.store.findIndex((store) => store.id === +storeId);
+    let indexOfProduct = this.store[indexOfStore].products.findIndex(
+      (product) => product.idProduct === +productId
+    );
+    this.store[indexOfStore].products.splice(indexOfProduct, 1);
+    this.store[indexOfStore].products.push(newProduct);
+    console.log(this.store[indexOfStore].products);
+  }
+
   killProduct(storeId: string, productId: string) {
     let storeIndex = this.store.findIndex((store) => store.id === +storeId);
     let thisStore = this.store[storeIndex];
