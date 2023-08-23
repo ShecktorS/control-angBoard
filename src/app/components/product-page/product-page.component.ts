@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ProductPageComponent implements OnInit {
   editMode = false;
   inputTitle!: string;
   inputDescription!: string;
+  isLogged = this.auth.person.isLogged;
 
   getId = (num: number) => num - 1;
 
@@ -42,7 +44,11 @@ export class ProductPageComponent implements OnInit {
     this.product = this.data.getProductbyId(this.storeId!, this.productId!);
   }
 
-  constructor(private data: DataService, private route: ActivatedRoute) {}
+  constructor(
+    private data: DataService,
+    private auth: AuthService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.storeId = this.route.snapshot.paramMap.get('id');

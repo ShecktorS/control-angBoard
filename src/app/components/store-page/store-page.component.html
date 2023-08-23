@@ -67,12 +67,18 @@
         Conferma
       </button>
     </div>
-    <button class="edit-btn" (click)="editingActivate()">✏️</button>
+    <button *ngIf="isLogged" class="edit-btn" (click)="editingActivate()">
+      ✏️
+    </button>
   </div>
   <div class="products">
-    <h1>Prodotti <span (click)="openModal()" class="addButton">➕</span></h1>
+    <h1>
+      Prodotti
+      <span *ngIf="isLogged" (click)="openModal()" class="addButton">➕</span>
+    </h1>
     <div class="products-list">
       <app-product-item
+        [isLogged]="isLogged"
         [product]="product"
         [storeId]="storeId"
         *ngFor="let product of store.products; index as i"

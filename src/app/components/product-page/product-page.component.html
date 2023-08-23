@@ -30,7 +30,7 @@
       </button>
     </form>
   </ng-template>
-  <button (click)="changeMode()" class="edit-button">
+  <button *ngIf="isLogged" (click)="changeMode()" class="edit-button">
     {{ !editMode ? "✏️" : "❌" }}
   </button>
 </div>

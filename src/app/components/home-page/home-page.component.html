@@ -5,6 +5,6 @@
     </app-store-item>
   </div>
 </div>
-<button routerLink="/add-new-store" class="addStoreBtn">
+<button *ngIf="isLogged" routerLink="/add-new-store" class="addStoreBtn">
   Aggiungi un nuovo Store
 </button>

@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ProductItemComponent implements OnInit {
   @Input() product: any;
   @Input() storeId: any;
+  @Input() isLogged!: boolean;
 
   deleteProduct(e: Event) {
     e.stopPropagation();

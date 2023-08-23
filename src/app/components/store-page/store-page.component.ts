@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { VisualConditionService } from 'src/app/services/visual-condition.service';
 
@@ -21,6 +22,7 @@ export class StorePageComponent implements OnInit {
   };
   checkSelfCondition = true;
   showModal = false;
+  isLogged = this.auth.person.isLogged;
 
   editingActivate() {
     this.editable = !this.editable;
@@ -78,7 +80,8 @@ export class StorePageComponent implements OnInit {
     private data: DataService,
     private route: ActivatedRoute,
     private router: Router,
-    public condition: VisualConditionService
+    public condition: VisualConditionService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {

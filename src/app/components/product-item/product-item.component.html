@@ -4,5 +4,7 @@
 >
   <h3 class="title">{{ product.title }}</h3>
   <p class="description">{{ product.description }}</p>
-  <button (click)="deleteProduct($event)" class="del-btn">Elimina</button>
+  <button *ngIf="isLogged" (click)="deleteProduct($event)" class="del-btn">
+    Elimina
+  </button>
 </div>
