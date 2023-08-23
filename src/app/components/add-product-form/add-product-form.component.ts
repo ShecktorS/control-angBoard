@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { PoupupService } from 'src/app/services/poupup.service';
 import { VisualConditionService } from 'src/app/services/visual-condition.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class AddProductFormComponent {
 
   constructor(
     private data: DataService,
-    private condition: VisualConditionService
+    private condition: VisualConditionService,
+    private poupup: PoupupService
   ) {}
 
   addProduct() {
@@ -27,8 +29,13 @@ export class AddProductFormComponent {
       let thisProduct = { title: title, description: description };
       this.data.addProduct(this.storeId, thisProduct);
       this.condition.swicthCondition();
+      this.poupup.changeEntity();
+      this.poupup.getPoupup('confirm');
+      this.poupup.showPoupup();
     } else {
-      alert('Inserisci correttamente tutti i dati!');
+      this.poupup.changeEntity(' del prodotto');
+      this.poupup.getPoupup('alert');
+      this.poupup.showPoupup();
     }
   }
 }

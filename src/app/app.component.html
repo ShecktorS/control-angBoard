@@ -14,3 +14,11 @@
 <div class="content">
   <router-outlet></router-outlet>
 </div>
+
+<div
+  [ngClass]="{ 'show-poupup-container': poupup.isVisible }"
+  class="poupup-container"
+  style="z-index: 3"
+>
+  <app-alert-poupup object="store"></app-alert-poupup>
+</div>

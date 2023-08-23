@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { PoupupService } from 'src/app/services/poupup.service';
 import { VisualConditionService } from 'src/app/services/visual-condition.service';
 
 @Component({
@@ -11,7 +12,6 @@ import { VisualConditionService } from 'src/app/services/visual-condition.servic
 })
 export class HomePageComponent implements OnInit {
   isLoading = this.condition.latencySimulate;
-
   storeList = this.dataService.store;
   isLogged = this.auth.person.isLogged;
 

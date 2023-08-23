@@ -1,0 +1,45 @@
+.poupup {
+  height: 250px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+
+  .symbol {
+    height: 30%;
+    background-color: #f65656;
+    font-size: 3em;
+  }
+  .content {
+    height: 70%;
+    background-color: #fefefe;
+
+    h3,
+    p {
+      color: #3b455e;
+    }
+
+    p {
+      width: 70%;
+      margin: 0 auto 20px;
+    }
+
+    .close-button {
+      font-family: "Poppins";
+      height: 30px;
+      width: 80px;
+      border: none;
+      border-radius: 30px;
+      background-color: #f65656;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(0.95);
+      }
+    }
+  }
+}

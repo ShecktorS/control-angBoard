@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { PoupupService } from './services/poupup.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
     this.auth.logout();
   }
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, public poupup: PoupupService) {}
 
   ngOnInit(): void {}
 }

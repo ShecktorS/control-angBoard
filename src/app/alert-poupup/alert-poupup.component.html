@@ -1,0 +1,16 @@
+<div class="poupup">
+  <div [style]="{ backgroundColor: poupup.poupup.color }" class="symbol">
+    {{ poupup.poupup.symbol }}
+  </div>
+  <div class="content">
+    <h3 class="title-message">{{ poupup.poupup.title }}</h3>
+    <p class="message">{{ poupup.poupup.message + poupup.entity }}</p>
+    <button
+      [style]="{ backgroundColor: poupup.poupup.color }"
+      (click)="closePoupup()"
+      class="close-button"
+    >
+      Chiudi
+    </button>
+  </div>
+</div>

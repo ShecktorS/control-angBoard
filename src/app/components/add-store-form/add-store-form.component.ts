@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { PoupupService } from 'src/app/services/poupup.service';
 
 @Component({
   selector: 'app-add-store-form',
@@ -20,7 +21,11 @@ export class AddStoreFormComponent {
     location: '',
   };
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor(
+    private router: Router,
+    private data: DataService,
+    public poupup: PoupupService
+  ) {}
 
   returnToHome() {
     this.router.navigate(['/']);
@@ -32,8 +37,13 @@ export class AddStoreFormComponent {
       this.data.addStore(this.newStore);
       this.newStore = this.emptyStore;
       this.returnToHome();
+      this.poupup.changeEntity();
+      this.poupup.getPoupup('confirm');
+      this.poupup.showPoupup();
     } else {
-      return alert('Inserisci correttamente tutti i dati');
+      this.poupup.changeEntity(' dello Store');
+      this.poupup.getPoupup('alert');
+      this.poupup.showPoupup();
     }
   }
 }

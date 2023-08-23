@@ -18,6 +18,12 @@
     justify-content: center;
     align-items: center;
 
+    h2 {
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+
     img {
       height: 40px;
       margin: 0 10px;
@@ -45,7 +51,15 @@
   }
 }
 
-.content {
-  // border: dotted 1px #1e1e1e;
-  /*height: 80vh;*/
+.poupup-container {
+  position: fixed;
+  top: 0;
+  right: calc(50vw - 150px);
+  transform: translatey(-300px);
+  transition: all 1s ease;
+}
+
+.show-poupup-container {
+  transform: translatey(30px);
+  transition: all 1s ease;
 }
