@@ -10,5 +10,9 @@ export class AuthService {
     isLogged: false,
   };
 
+  logout() {
+    this.person.isLogged = false;
+  }
+
   constructor() {}
 }

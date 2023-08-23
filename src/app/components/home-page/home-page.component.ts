@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { VisualConditionService } from 'src/app/services/visual-condition.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,10 +10,27 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
+  isLoading = this.condition.latencySimulate;
+
   storeList = this.dataService.store;
   isLogged = this.auth.person.isLogged;
 
-  constructor(private dataService: DataService, private auth: AuthService) {}
+  loadData() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1500);
+  }
 
-  ngOnInit(): void {}
+  constructor(
+    private dataService: DataService,
+    private auth: AuthService,
+    private condition: VisualConditionService
+  ) {}
+
+  ngOnInit(): void {
+    if (this.condition.latencySimulate) {
+      this.loadData();
+      this.condition.loadData();
+    }
+  }
 }

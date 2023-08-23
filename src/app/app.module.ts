@@ -13,6 +13,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { AddStoreFormComponent } from './components/add-store-form/add-store-form.component';
 import { FormsModule } from '@angular/forms';
 import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AddProductFormComponent } from './components/add-product-form/add-produ
     ErrorPageComponent,
     AddStoreFormComponent,
     AddProductFormComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

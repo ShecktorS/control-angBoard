@@ -1,10 +1,13 @@
-<h1 class="title">Store!</h1>
-<div class="container-store">
+<h1 class="title">Store disponibili</h1>
+<div class="container-store" *ngIf="!isLoading; else spinner">
   <div class="container-list">
     <app-store-item [store]="store" *ngFor="let store of storeList; index as i">
     </app-store-item>
   </div>
 </div>
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
 <button *ngIf="isLogged" routerLink="/add-new-store" class="addStoreBtn">
   Aggiungi un nuovo Store
 </button>

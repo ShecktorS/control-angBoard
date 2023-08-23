@@ -3,11 +3,12 @@
 <!-- HEADER -->
 <div class="header">
   <h1 routerLink="/">LOGO</h1>
-  <div *ngIf="isLogged">
+  <div *ngIf="auth.person.isLogged">
     <img src="https://picsum.photos/100/100?7" alt="pic profile" />
-    <h2>Nome utente</h2>
+    <h2>Ciro Esposito</h2>
+    <p (click)="logout()" routerLink="/login" class="logout">Logout</p>
   </div>
-  <h2 class="login" routerLink="/login" *ngIf="!isLogged">Login</h2>
+  <h2 class="login" routerLink="/login" *ngIf="!auth.person.isLogged">Login</h2>
 </div>
 
 <div class="content">
