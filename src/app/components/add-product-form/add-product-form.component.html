@@ -14,5 +14,15 @@
     id="descrizione"
     placeholder="Descrizione"
   />
+  <div>
+    <label for="prezzo">Prezzo: </label>
+    <input
+      [(ngModel)]="newProduct.price"
+      type="number"
+      name="prezzo"
+      id="prezzo"
+      [min]="0"
+    />
+  </div>
   <input type="submit" value="Aggiungi" />
 </form>

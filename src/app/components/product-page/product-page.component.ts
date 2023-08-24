@@ -16,6 +16,7 @@ export class ProductPageComponent implements OnInit {
   editMode = false;
   inputTitle!: string;
   inputDescription!: string;
+  inputPrice!: number;
   isLogged = this.auth.person.isLogged;
 
   getId = (num: number) => num - 1;
@@ -25,11 +26,16 @@ export class ProductPageComponent implements OnInit {
   }
 
   editProduct() {
-    if (this.inputTitle.length > 1 && this.inputDescription.length > 1) {
+    if (
+      this.inputTitle.length > 1 &&
+      this.inputDescription.length > 1 &&
+      this.inputPrice > 1
+    ) {
       this.changeMode();
       let newProduct = {
         title: this.inputTitle,
         description: this.inputDescription,
+        price: this.inputPrice,
         idProduct: +this.productId!,
       };
       this.data.editProduct(this.storeId!, this.productId!, newProduct);
@@ -58,6 +64,7 @@ export class ProductPageComponent implements OnInit {
       this.product = this.data.getProductbyId(this.storeId, this.productId);
       this.inputTitle = this.product.title;
       this.inputDescription = this.product.description;
+      this.inputPrice = this.product.price;
     } else {
     }
   }

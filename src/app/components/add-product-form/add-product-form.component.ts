@@ -13,6 +13,7 @@ export class AddProductFormComponent {
   newProduct = {
     title: '',
     description: '',
+    price: 0,
   };
 
   constructor(
@@ -22,11 +23,17 @@ export class AddProductFormComponent {
   ) {}
 
   addProduct() {
-    let { title, description } = this.newProduct;
-    if (title.length > 1 && description.length > 1) {
+    let { title, description, price } = this.newProduct;
+    if ((title.length > 1 && description.length > 1, price > 0)) {
       this.newProduct.title = '';
       this.newProduct.description = '';
-      let thisProduct = { title: title, description: description };
+      this.newProduct.price = 0;
+
+      let thisProduct = {
+        title: title,
+        description: description,
+        price: price,
+      };
       this.data.addProduct(this.storeId, thisProduct);
       this.condition.swicthCondition();
       this.poupup.changeEntity();
