@@ -10,7 +10,7 @@ import { VisualConditionService } from 'src/app/services/visual-condition.servic
   styleUrls: ['./store-page.component.scss'],
 })
 export class StorePageComponent implements OnInit {
-  storeExists: boolean | undefined;
+  storeExists!: boolean;
   storeId!: string;
   store!: any;
   editable = false;

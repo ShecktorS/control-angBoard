@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private auth: AuthService,
+    public auth: AuthService,
     private condition: VisualConditionService
   ) {}
 

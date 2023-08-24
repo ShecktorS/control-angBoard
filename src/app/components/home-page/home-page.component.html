@@ -4,10 +4,16 @@
     <app-store-item [store]="store" *ngFor="let store of storeList; index as i">
     </app-store-item>
   </div>
-  <h2 *ngIf="!storeList.length">
-    Non e presente alcuno store! <br />
-    Per favore aggiungine uno.
-  </h2>
+  <div style="text-align: center" *ngIf="!storeList?.length">
+    <h2>
+      Non e presente alcuno store! <br />
+      Per favore aggiungine uno.
+    </h2>
+    <p style="padding: 0 10px" *ngIf="!auth.person.isLogged">
+      Se desidrei cominciare ad aggiungere qualche store loggati <br />
+      Inserisci le cedenziali <b> admin admin </b>
+    </p>
+  </div>
 </div>
 <ng-template #spinner>
   <app-spinner></app-spinner>

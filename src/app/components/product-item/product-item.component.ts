@@ -13,7 +13,6 @@ export class ProductItemComponent implements OnInit {
 
   deleteProduct(e: Event) {
     e.stopPropagation();
-    console.log(this.product);
     this.data.killProduct(this.storeId, this.product.idProduct);
   }
 
@@ -30,6 +29,9 @@ export class ProductItemComponent implements OnInit {
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    console.log(this.product);
+    // this.product = this.data.getProductbyId(
+    //   this.storeId,
+    //   this.product.idProduct
+    // );
   }
 }

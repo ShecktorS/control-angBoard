@@ -1,6 +1,17 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 
+// interface Store {
+//   id: number;
+//   name: string;
+//   img: string;
+//   location: string;
+//   description: string;
+//   products: Product[];
+// }
+// interface Product {
+//   title: string, description: string, idProduct: number, price: number
+// }
 @Injectable({
   providedIn: 'root',
 })
@@ -17,18 +28,30 @@ export class DataService {
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae repellat quam aliquid illum quasi, quaerat maxime distinctio atque fuga sequi explicabo culpa officia.',
       products: [
-        { title: 'scarpa', description: 'Una bella scarpa', idProduct: 1 },
+        {
+          title: 'scarpa',
+          description: 'Una bella scarpa',
+          idProduct: 1,
+          price: 125,
+        },
         {
           title: 'tovaglia',
           description: 'Una tovaglia ricamata',
           idProduct: 2,
+          price: 10,
         },
         {
           title: 'maglietta',
           description: 'Una maglietta prodotta in Giappone',
           idProduct: 3,
+          price: 5,
         },
-        { title: 'tappeto', description: 'Una tappeto di lusso', idProduct: 4 },
+        {
+          title: 'tappeto',
+          description: 'Una tappeto di lusso',
+          idProduct: 4,
+          price: 50,
+        },
       ],
     },
     {
@@ -38,11 +61,17 @@ export class DataService {
       location: 'Roma',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
       products: [
-        { title: 'scarpa', description: 'Una bella scarpa', idProduct: 1 },
+        {
+          title: 'scarpa',
+          description: 'Una bella scarpa',
+          idProduct: 1,
+          price: 3,
+        },
         {
           title: 'tovaglia',
           description: 'Una tovaglia ricamata',
           idProduct: 2,
+          price: 300,
         },
       ],
     },
@@ -53,7 +82,12 @@ export class DataService {
       location: 'Palermo',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
       products: [
-        { title: 'tappeto', description: 'Una tappeto di lusso', idProduct: 4 },
+        {
+          title: 'tappeto',
+          description: 'Una tappeto di lusso',
+          idProduct: 4,
+          price: 20,
+        },
       ],
     },
   ];
