@@ -87,15 +87,15 @@ export class StorePageComponent implements OnInit {
   ngOnInit(): void {
     this.showModal = this.condition.modalAddProduct;
     this.storeId = this.route.snapshot.paramMap.get('id') || '';
-    if (this.storeId) {
+
+    if (this.storeId && this.data.checkStore(+this.storeId)) {
       this.storeExists = true;
       this.store = this.data.getStorebyId(this.storeId);
-      console.log(this.store.location);
 
       this.editStoreEntity = {
-        name: this.store.name,
-        description: this.store.description,
-        location: this.store.location,
+        name: this.store?.name,
+        description: this.store?.description,
+        location: this.store?.location,
       };
     } else {
       this.router.navigate(['/404']);
