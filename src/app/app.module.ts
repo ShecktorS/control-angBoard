@@ -14,7 +14,7 @@ import { AddStoreFormComponent } from './components/add-store-form/add-store-for
 import { FormsModule } from '@angular/forms';
 import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { AlertPoupupComponent } from './alert-poupup/alert-poupup.component';
+import { AlertPoupupComponent } from './components/alert-poupup/alert-poupup.component';
 
 @NgModule({
   declarations: [

@@ -1,19 +1,19 @@
 <div class="store-page">
   <h2>
-    {{ store.name }}
+    {{ store?.name }}
   </h2>
   <div class="store-detail">
     <h4>
-      {{ store.description }}
+      {{ store?.description }}
     </h4>
-    <h3 class="store-location">{{ store.location }}</h3>
+    <h3 class="store-location">{{ store?.location }}</h3>
     <!-- ---INPUT CONTAINER---- -->
     <form class="input-container" *ngIf="editStore">
       <div>
         <label for="name">Nome dello store:</label>
         <input
           (input)="changeName($event)"
-          value="{{ store.name }}"
+          value="{{ store?.name }}"
           type="text"
           name="name"
           id="name"
@@ -29,13 +29,13 @@
           cols="25"
           rows="10"
         >
-          {{ store.description }} </textarea
+          {{ store?.description }} </textarea
         >
       </div>
       <div>
         <label for="location">Citta dello Store</label>
         <input
-          value="{{ store.location }}"
+          value="{{ store?.location }}"
           (input)="changeLocation($event)"
           type="text"
           name="location"
@@ -81,11 +81,11 @@
         [isLogged]="isLogged"
         [product]="product"
         [storeId]="storeId"
-        *ngFor="let product of store.products; index as i"
+        *ngFor="let product of store?.products; index as i"
       ></app-product-item>
     </div>
     <p>
-      {{ store.products.length < 1 ? "Non è presente alcun prodotto!" : "" }}
+      {{ store?.products?.length < 1 ? "Non è presente alcun prodotto!" : "" }}
     </p>
   </div>
 </div>

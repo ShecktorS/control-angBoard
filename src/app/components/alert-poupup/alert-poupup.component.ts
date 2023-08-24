@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PoupupService } from '../services/poupup.service';
+import { PoupupService } from '../../services/poupup.service';
 
 @Component({
   selector: 'app-alert-poupup',

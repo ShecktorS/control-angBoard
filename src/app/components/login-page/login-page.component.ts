@@ -30,7 +30,9 @@ export class LoginPageComponent implements OnInit {
   login() {
     if (this.checkUser()) {
       this.authService.person.isLogged = true;
-      console.log(this.authService.person);
+      localStorage.setItem('userIsLogged', 'true');
+      console.log(!!localStorage.getItem('userIsLogged'));
+
       this.router.navigate(['/']);
     }
   }

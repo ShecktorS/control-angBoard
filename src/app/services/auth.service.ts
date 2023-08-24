@@ -12,6 +12,7 @@ export class AuthService {
 
   logout() {
     this.person.isLogged = false;
+    localStorage.removeItem('userIsLogged');
   }
 
   constructor() {}

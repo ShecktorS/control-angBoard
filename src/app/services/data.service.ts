@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { findIndex } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -74,7 +74,7 @@ export class DataService {
       products: [],
     };
     this.store.push(storeToAdd);
-    console.log(this.store);
+    this.localStorage.pushStoredData(this.store);
   }
 
   editStore(id: string, newStore: any) {
@@ -82,10 +82,12 @@ export class DataService {
     let storeUpdate = { ...storeToEdit, ...newStore };
     this.store = this.store.filter((store) => store.id !== +id);
     this.store.push(storeUpdate);
+    this.localStorage.pushStoredData(this.store);
   }
 
   killStore(id: string) {
-    return (this.store = this.store.filter((store) => store.id !== +id));
+    this.store = this.store.filter((store) => store.id !== +id);
+    this.localStorage.pushStoredData(this.store);
   }
 
   // Products Methods:
@@ -96,6 +98,7 @@ export class DataService {
     this.store[
       this.store.findIndex((store) => store.id === +idStore)
     ].products.push(updateProduct);
+    this.localStorage.pushStoredData(this.store);
   }
 
   getProductbyId(storeId: string, productId: string) {
@@ -113,7 +116,7 @@ export class DataService {
     );
     this.store[indexOfStore].products.splice(indexOfProduct, 1);
     this.store[indexOfStore].products.push(newProduct);
-    console.log(this.store[indexOfStore].products);
+    this.localStorage.pushStoredData(this.store);
   }
 
   killProduct(storeId: string, productId: string) {
@@ -123,9 +126,16 @@ export class DataService {
       (product) => product.idProduct === +productId
     );
     this.store[storeIndex].products.splice(productIndex, 1);
+    this.localStorage.pushStoredData(this.store);
   }
 
-  constructor() {}
-}
+  getStoredData(data: any) {
+    this.store = data;
+  }
 
-// TODO: Inserire nella funzione di aggiunzione un contatore che va poi ad assegnare un id sempre diverso e sempre maggiore
+  checkStore(storeId: number) {
+    return this.store.map((store) => store.id).includes(storeId);
+  }
+
+  constructor(private localStorage: LocalStorageService) {}
+}
