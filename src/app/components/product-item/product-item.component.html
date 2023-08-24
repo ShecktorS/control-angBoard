@@ -4,6 +4,9 @@
 >
   <h3 class="title">{{ product.title }}</h3>
   <p class="description">{{ product.description }}</p>
+  <h4 class="price" [style]="{ backgroundColor: getColorPrice() }">
+    $ {{ product.price }},00
+  </h4>
   <button *ngIf="isLogged" (click)="deleteProduct($event)" class="del-btn">
     Elimina
   </button>

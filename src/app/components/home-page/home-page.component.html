@@ -4,6 +4,10 @@
     <app-store-item [store]="store" *ngFor="let store of storeList; index as i">
     </app-store-item>
   </div>
+  <h2 *ngIf="!storeList.length">
+    Non e presente alcuno store! <br />
+    Per favore aggiungine uno.
+  </h2>
 </div>
 <ng-template #spinner>
   <app-spinner></app-spinner>

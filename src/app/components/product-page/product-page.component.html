@@ -3,6 +3,7 @@
     <h3>ID: {{ product.idProduct }}</h3>
     <h1>{{ product.title }}</h1>
     <h2>{{ product.description }}</h2>
+    <h2>$ {{ product.price }},00</h2>
   </div>
   <ng-template #editContainer>
     <h2>Modifica il prodotto</h2>
@@ -19,10 +20,18 @@
         [(ngModel)]="inputDescription"
         value="{{ product.description }}"
       />
+      <input
+        [min]="0"
+        type="number"
+        name="price"
+        [(ngModel)]="inputPrice"
+        value="{{ product.price }}"
+      />
       <button
         [disabled]="
           inputTitle === product.title &&
-          inputDescription === product.description
+          inputDescription === product.description &&
+          inputPrice === product.price
         "
         type="submit"
       >

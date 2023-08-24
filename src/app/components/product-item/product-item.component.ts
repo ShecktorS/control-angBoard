@@ -17,6 +17,16 @@ export class ProductItemComponent implements OnInit {
     this.data.killProduct(this.storeId, this.product.idProduct);
   }
 
+  getColorPrice() {
+    if (this.product.price < 11) {
+      return '#35c28d';
+    } else if (this.product.price < 30 && this.product.price > 10) {
+      return '#e9a94a';
+    } else {
+      return '#dd3636';
+    }
+  }
+
   constructor(private data: DataService) {}
 
   ngOnInit(): void {

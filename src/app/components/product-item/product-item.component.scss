@@ -1,4 +1,5 @@
 .product-container {
+  position: relative;
   border: solid 5px #faca93;
   background-color: #e3e4dd;
   box-sizing: border-box;
@@ -6,11 +7,18 @@
   min-height: 250px;
   width: 200px;
   border-radius: 20px;
-  padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  // display: flex;
+  // flex-direction: column;
+
+  .title,
+  .description {
+    margin: auto 20px;
+  }
 
   .title {
-    margin-top: 50px;
+    margin-top: 30px;
     text-transform: capitalize;
   }
 
@@ -39,5 +47,16 @@
     &:hover {
       filter: brightness(0.94);
     }
+  }
+
+  .price {
+    text-align: center;
+    color: white;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0;
   }
 }
