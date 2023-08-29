@@ -13,7 +13,7 @@ export class LocalStorageService {
       const storedData = JSON.parse(storedDataStringed);
       data.getStoredData(storedData);
     } else {
-      console.warn('Dati Locali non trovati');
+      this.pushStoredData([]);
     }
   }
 
@@ -26,6 +26,11 @@ export class LocalStorageService {
 
   pushStoredData(data: any) {
     localStorage.setItem('data', JSON.stringify(data));
+  }
+
+  getStoredData() {
+    const data = localStorage.getItem('data');
+    return !!data ? JSON.parse(data) : null;
   }
 
   constructor(private auth: AuthService) {}

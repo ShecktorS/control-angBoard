@@ -12,7 +12,7 @@ import { VisualConditionService } from 'src/app/services/visual-condition.servic
 })
 export class HomePageComponent implements OnInit {
   isLoading = this.condition.latencySimulate;
-  storeList = this.dataService.store;
+  storeList = this.dataService.stores;
   isLogged = this.auth.person.isLogged;
 
   loadData() {
@@ -25,7 +25,9 @@ export class HomePageComponent implements OnInit {
     private dataService: DataService,
     public auth: AuthService,
     private condition: VisualConditionService
-  ) {}
+  ) {
+    console.log(this.storeList);
+  }
 
   ngOnInit(): void {
     if (this.condition.latencySimulate) {

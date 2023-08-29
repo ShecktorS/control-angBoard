@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
@@ -9,7 +9,7 @@ import { VisualConditionService } from 'src/app/services/visual-condition.servic
   templateUrl: './store-page.component.html',
   styleUrls: ['./store-page.component.scss'],
 })
-export class StorePageComponent implements OnInit {
+export class StorePageComponent implements OnInit, AfterContentChecked {
   storeExists!: boolean;
   storeId!: string;
   store!: any;
@@ -100,6 +100,8 @@ export class StorePageComponent implements OnInit {
     } else {
       this.router.navigate(['/404']);
     }
-    console.log(this.data.store);
+  }
+  ngAfterContentChecked(): void {
+    this.store = this.data.getStorebyId(this.storeId);
   }
 }
