@@ -46,4 +46,3 @@ export class AddProductFormComponent {
     }
   }
 }
-// AddProductFormComponent(idstore, product)

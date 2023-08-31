@@ -19,86 +19,17 @@ export class DataService {
   private addStoreCounter = 5;
   private addProductCounter = 5;
 
-  store = [
-    {
-      id: 1,
-      name: 'Nike',
-      img: 'https://picsum.photos/300/300?1',
-      location: 'Milano',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae repellat quam aliquid illum quasi, quaerat maxime distinctio atque fuga sequi explicabo culpa officia.',
-      products: [
-        {
-          title: 'scarpa',
-          description: 'Una bella scarpa',
-          idProduct: 1,
-          price: 125,
-        },
-        {
-          title: 'tovaglia',
-          description: 'Una tovaglia ricamata',
-          idProduct: 2,
-          price: 10,
-        },
-        {
-          title: 'maglietta',
-          description: 'Una maglietta prodotta in Giappone',
-          idProduct: 3,
-          price: 5,
-        },
-        {
-          title: 'tappeto',
-          description: 'Una tappeto di lusso',
-          idProduct: 4,
-          price: 50,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Adidas',
-      img: 'https://picsum.photos/300/300?2',
-      location: 'Roma',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-      products: [
-        {
-          title: 'scarpa',
-          description: 'Una bella scarpa',
-          idProduct: 1,
-          price: 3,
-        },
-        {
-          title: 'tovaglia',
-          description: 'Una tovaglia ricamata',
-          idProduct: 2,
-          price: 300,
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: 'Lonsdale',
-      img: 'https://picsum.photos/300/300?3',
-      location: 'Palermo',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-      products: [
-        {
-          title: 'tappeto',
-          description: 'Una tappeto di lusso',
-          idProduct: 4,
-          price: 20,
-        },
-      ],
-    },
-  ];
+  stores = this.localStorage.getStoredData();
 
   //Store Methods:
 
   getStorebyId(id: string) {
-    return this.store.find((store) => store.id === +id);
+    const stores = this.localStorage.getStoredData();
+    return stores.find((store: { id: number }) => store.id === +id);
   }
 
   addStore(newStore: any) {
+    const stores = this.localStorage.getStoredData();
     this.addStoreCounter++;
     let storeImg = `https://picsum.photos/300/300?${this.addStoreCounter}`;
     let storeToAdd = {
@@ -107,68 +38,89 @@ export class DataService {
       img: storeImg,
       products: [],
     };
-    this.store.push(storeToAdd);
-    this.localStorage.pushStoredData(this.store);
+    stores.push(storeToAdd);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   editStore(id: string, newStore: any) {
-    let [storeToEdit] = this.store.filter((store) => store.id === +id);
+    let stores = this.localStorage.getStoredData();
+    let [storeToEdit] = stores.filter(
+      (store: { id: number }) => store.id === +id
+    );
     let storeUpdate = { ...storeToEdit, ...newStore };
-    this.store = this.store.filter((store) => store.id !== +id);
-    this.store.push(storeUpdate);
-    this.localStorage.pushStoredData(this.store);
+    stores = stores.filter((store: { id: number }) => store.id !== +id);
+    stores.push(storeUpdate);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   killStore(id: string) {
-    this.store = this.store.filter((store) => store.id !== +id);
-    this.localStorage.pushStoredData(this.store);
+    let stores = this.localStorage.getStoredData();
+    stores = stores.filter((store: { id: number }) => store.id !== +id);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   // Products Methods:
 
   addProduct(idStore: string, newProduct: any) {
+    const stores = this.localStorage.getStoredData();
     this.addProductCounter++;
     let updateProduct = { ...newProduct, idProduct: this.addProductCounter };
-    this.store[
-      this.store.findIndex((store) => store.id === +idStore)
+    stores[
+      stores.findIndex((store: { id: number }) => store.id === +idStore)
     ].products.push(updateProduct);
-    this.localStorage.pushStoredData(this.store);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   getProductbyId(storeId: string, productId: string) {
-    let thisStore = this.store.find((store) => store.id === +storeId);
+    const stores = this.localStorage.getStoredData();
+    let thisStore = stores.find(
+      (store: { id: number }) => store.id === +storeId
+    );
     let product = thisStore?.products.find(
-      (product) => product.idProduct === +productId
+      (product: { idProduct: number }) => product.idProduct === +productId
     );
     return product;
   }
 
   editProduct(storeId: string, productId: string, newProduct: any) {
-    let indexOfStore = this.store.findIndex((store) => store.id === +storeId);
-    let indexOfProduct = this.store[indexOfStore].products.findIndex(
-      (product) => product.idProduct === +productId
+    const stores = this.localStorage.getStoredData();
+    let indexOfStore = stores.findIndex(
+      (store: { id: number }) => store.id === +storeId
     );
-    this.store[indexOfStore].products.splice(indexOfProduct, 1);
-    this.store[indexOfStore].products.push(newProduct);
-    this.localStorage.pushStoredData(this.store);
+    let indexOfProduct = stores[indexOfStore].products.findIndex(
+      (product: { idProduct: number }) => product.idProduct === +productId
+    );
+    stores[indexOfStore].products.splice(indexOfProduct, 1);
+    stores[indexOfStore].products.push(newProduct);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   killProduct(storeId: string, productId: string) {
-    let storeIndex = this.store.findIndex((store) => store.id === +storeId);
-    let thisStore = this.store[storeIndex];
-    let productIndex = thisStore?.products.findIndex(
-      (product) => product.idProduct === +productId
+    const stores = this.localStorage.getStoredData();
+    let storeIndex = stores.findIndex(
+      (store: { id: number }) => store.id === +storeId
     );
-    this.store[storeIndex].products.splice(productIndex, 1);
-    this.localStorage.pushStoredData(this.store);
+    let thisStore = stores[storeIndex];
+    let productIndex = thisStore?.products.findIndex(
+      (product: { idProduct: number }) => product.idProduct === +productId
+    );
+    stores[storeIndex].products.splice(productIndex, 1);
+    this.localStorage.pushStoredData(stores);
+    this.stores = stores;
   }
 
   getStoredData(data: any) {
-    this.store = data;
+    let stores = data;
   }
 
   checkStore(storeId: number) {
-    return this.store.map((store) => store.id).includes(storeId);
+    const stores = this.localStorage.getStoredData();
+    return stores.map((store: { id: any }) => store.id).includes(storeId);
   }
 
   constructor(private localStorage: LocalStorageService) {}
