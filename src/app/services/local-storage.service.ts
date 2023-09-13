@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DataService } from './data.service';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -32,6 +31,8 @@ export class LocalStorageService {
     const data = localStorage.getItem('data');
     return !!data ? JSON.parse(data) : null;
   }
+
+  pushToken = (token: string) => localStorage.setItem('token', token);
 
   constructor(private auth: AuthService) {}
 }

@@ -1,17 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 
-// interface Store {
-//   id: number;
-//   name: string;
-//   img: string;
-//   location: string;
-//   description: string;
-//   products: Product[];
-// }
-// interface Product {
-//   title: string, description: string, idProduct: number, price: number
-// }
 @Injectable({
   providedIn: 'root',
 })

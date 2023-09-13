@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { PoupupService } from 'src/app/services/poupup.service';
 import { VisualConditionService } from 'src/app/services/visual-condition.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-home-page',
@@ -21,18 +22,35 @@ export class HomePageComponent implements OnInit {
     }, 1500);
   }
 
+  // executeFetch = async () =>
+  //   (await this.httpReq.GET('shop')).subscribe((data) => console.log(data));
+
   constructor(
     private dataService: DataService,
     public auth: AuthService,
-    private condition: VisualConditionService
-  ) {
-    console.log(this.storeList);
-  }
+    private condition: VisualConditionService,
+    private httpReq: HttpService
+  ) {}
 
   ngOnInit(): void {
     if (this.condition.latencySimulate) {
       this.loadData();
       this.condition.loadData();
     }
+
+    let token = localStorage.getItem('token');
+    if (!!token) {
+      this.httpReq.GET('shop').subscribe((data: any) =>
+        console.log(
+          Object.keys(data).forEach((key) => {
+            this.dataService.addStore(data[key]);
+            this.dataService.stores = [...this.dataService.stores];
+          })
+        )
+      );
+      console.log(this.dataService.stores);
+    }
+
+    // this.executeFetch();
   }
 }
